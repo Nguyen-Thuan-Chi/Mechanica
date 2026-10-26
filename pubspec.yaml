@@ -1,0 +1,45 @@
+name: mechanica
+description: "Mechanica — Vietnamese offline mechanical puzzle adventure with twelve levels."
+publish_to: 'none'
+version: 1.1.0+2
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flame: ^1.38.2
+  flame_audio: ^2.12.2
+  shared_preferences: ^2.5.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  integration_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/data/
+    - assets/manifest.json
+    - assets/images/chapters/brass/
+    - assets/images/chapters/water/
+    - assets/images/chapters/prism/
+    - assets/images/chapters/core/
+    - assets/images/ui/
+    - assets/images/exploration/
+    - assets/audio/music/
+    - assets/audio/sfx/
+    - assets/fonts/NotoSans-OFL.txt
+    - assets/fonts/NotoSerif-OFL.txt
+  fonts:
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/NotoSans.ttf
+    - family: NotoSerif
+      fonts:
+        - asset: assets/fonts/NotoSerif.ttf

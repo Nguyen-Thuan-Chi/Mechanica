@@ -1,0 +1,92 @@
+{
+  "source_version": "1.1.0+2",
+  "scope": "Repository/documentation handover; gameplay and Dart source unchanged",
+  "environment": {
+    "flutter": "3.47.7",
+    "dart": "3.13.5",
+    "android_compile_target_sdk": 36,
+    "android_min_sdk": 24,
+    "emulator_api": 37
+  },
+  "commands": {
+    "flutter pub get": {
+      "exit": 0
+    },
+    "dart format --output=none --set-exit-if-changed .": {
+      "exit": 0,
+      "files": 60,
+      "changed": 0,
+      "source_files": 30,
+      "includes_local_preview_copy": true
+    },
+    "flutter analyze": {
+      "exit": 0,
+      "issues": 0
+    },
+    "flutter test": {
+      "exit": 0,
+      "passed": 77
+    },
+    "flutter build apk --release": {
+      "exit": 0
+    },
+    "python tools/verify_assets.py": {
+      "exit": 0,
+      "assets": 74,
+      "images": 46,
+      "bgm": 4,
+      "sfx": 19
+    }
+  },
+  "release_apk": {
+    "apk": "build/app/outputs/flutter-apk/app-release.apk",
+    "bytes": 85602663,
+    "sha256": "6e012804d2d7f8ca96a436c082e9c7f4533788e1e5e90f45b67fb0e2e1cff0bd",
+    "verified_assets": 74,
+    "developer_menu_literal_in_aot": false,
+    "test_entrypoint_in_apk": false
+  },
+  "android_final_smoke": {
+    "release_installed": true,
+    "home_and_room_1_visually_checked": true,
+    "landscape": true,
+    "developer_menu_absent_in_release": true,
+    "native_bgm_loop_and_unpaused_observed": true,
+    "debug_menu_12_choices_visually_checked": true,
+    "preferences_restored_and_compared": true,
+    "all_12_levels_replayed_this_handover": false
+  },
+  "historical_phase2_integration": {
+    "normal_12_levels_and_ending": "PASS, two runs",
+    "developer_12_direct_opens_and_isolation": "PASS",
+    "native_audio_and_lifecycle": "PASS"
+  },
+  "github_preview": {
+    "files_in_build_snapshot": 184,
+    "bytes_in_build_snapshot": 42503804,
+    "copied_local_properties": false,
+    "copied_gradle_wrapper_jar": false,
+    "pub_get": "PASS",
+    "release_build": "PASS",
+    "actual_remote_clone": false
+  },
+  "repository_audit": {
+    "candidate_file_count": 187,
+    "pattern_scan_text_files": 93,
+    "secret_pattern_matches": [],
+    "all_manifest_assets_in_candidates": true,
+    "no_candidate_over_10MiB": true,
+    "git_root_initialized": false,
+    "committed": false,
+    "pushed": false,
+    "github_release_created": false
+  },
+  "not_verified": [
+    "Physical Android ARM device",
+    "Second-machine build or actual GitHub clone",
+    "FPS, RAM, battery benchmarks",
+    "Independent player playtest and multi-speaker audio review",
+    "Web production behavior",
+    "Play Store production signing"
+  ]
+}

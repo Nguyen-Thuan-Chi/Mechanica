@@ -1,0 +1,28 @@
+{
+  "tool": "built-in image_gen",
+  "license": "AI-generated original output, not CC0",
+  "source_folder": "art_sources/phase2",
+  "atlases": [
+    [
+      "exec-7816a07b-041c-4c2b-9a7e-e33b2812f729.png",
+      [
+        "cabinet",
+        "notebook",
+        "key",
+        "coupler"
+      ]
+    ],
+    [
+      "exec-7ed0bfbc-91fd-40e6-b0fe-85e886a04637.png",
+      [
+        "hose",
+        "filter",
+        "gasket",
+        "fuse"
+      ]
+    ]
+  ],
+  "contract": "Front-facing illustrated mechanical adventure, tactile worn materials, upper-left light, 2x2 isolated true-alpha sprites. Cabinet/notebook/key/coupler; hose/filter/gasket/fuse. No text, logos or UI.",
+  "runtime_folder": "assets/images/exploration",
+  "original_generation_folder": "C:\\Users\\Admin\\.codex\\generated_images\\01a17418-9b74-7110-99b5-a490e7834407"
+}
