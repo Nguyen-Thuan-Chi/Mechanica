@@ -31,19 +31,30 @@ class GameSettings {
 }
 
 class ProgressStore {
-  ProgressStore(this.preferences, {this.development = false});
+  ProgressStore(this.preferences, {this.development = false, this.uid});
+  final String? uid;
   final bool development;
   final SharedPreferences preferences;
   static const key = 'mechanica_save_v1', backupKey = 'mechanica_save_backup';
-  String get storageKey => development ? 'mechanica_development_v2' : key;
-  String get storageBackupKey =>
-      development ? 'mechanica_development_backup' : backupKey;
+  String get storageKey => development
+      ? 'mechanica_development_v2'
+      : uid == null
+      ? key
+      : 'mechanica_uid_${Uri.encodeComponent(uid!)}';
+  String get storageBackupKey => development
+      ? 'mechanica_development_backup'
+      : uid == null
+      ? backupKey
+      : '${storageKey}_backup';
   int _loadedVersion = 2;
   int unlocked = 1;
   final Map<String, int> bestStars = {}, bestMoves = {}, hintUsage = {};
   final Set<String> tutorials = {};
   GameSettings settings = GameSettings();
   Json? resume;
+  final List<Json> outbox = [];
+  final Map<String, int> bestSeconds = {};
+  int elapsedSeconds = 0;
   String? warning;
   Future<void> _pending = Future.value();
 
@@ -87,6 +98,12 @@ class ProgressStore {
           ..addAll(seen);
         settings = nextSettings;
         resume = nextResume;
+        outbox
+          ..clear()
+          ..addAll(array(j['outbox']).map(object));
+        bestSeconds
+          ..clear()
+          ..addAll(Map<String, int>.from(j['best_seconds'] as Map? ?? {}));
         _loadedVersion = j['save_version']! as int;
         return;
       } catch (_) {
@@ -104,6 +121,8 @@ class ProgressStore {
     'tutorials': tutorials.toList(),
     'settings': settings.toJson(),
     'resume': resume,
+    'outbox': outbox,
+    'best_seconds': bestSeconds,
   };
   Future<void> save() {
     final encoded = jsonEncode(snapshot());
@@ -134,6 +153,7 @@ class ProgressStore {
             'state': state.toJson(),
             'hints': hints,
             'undo': undo,
+            'elapsed_seconds': elapsedSeconds,
           };
     hintUsage[level.id] = hints;
     return save();
@@ -206,6 +226,8 @@ class ProgressStore {
     bestMoves.clear();
     hintUsage.clear();
     tutorials.clear();
+    outbox.clear();
+    bestSeconds.clear();
     resume = null;
     _loadedVersion = 2;
     await _pending.catchError((Object _) {});

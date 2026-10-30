@@ -44,6 +44,9 @@ void main() {
       }
 
       Future<void> dismissTutorial() async {
+        if (find.text('Bắt đầu sửa máy').evaluate().isNotEmpty) {
+          await button('Bắt đầu sửa máy');
+        }
         if (find.text('Đã rõ').evaluate().isNotEmpty) {
           await button('Đã rõ');
         }

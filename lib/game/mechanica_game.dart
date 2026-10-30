@@ -343,6 +343,23 @@ class RoomScene extends PositionComponent with TapCallbacks {
     final accent = chapterColors[level.chapter];
     for (final h in level.room!.hotspots) {
       final r = Rect.fromLTWH(h.rect[0], h.rect[1], h.rect[2], h.rect[3]);
+      if (!ctrl.zoom && ctrl.guideTarget == h.id) {
+        final opacity = .6 + .3 * math.sin(time * 3).abs();
+        c.drawRRect(
+          RRect.fromRectAndRadius(r.inflate(8), const Radius.circular(12)),
+          Paint()
+            ..color = const Color(0xffffd780).withValues(alpha: opacity)
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 6,
+        );
+        textAt(
+          c,
+          '↓ CHẠM VÀO ĐÂY',
+          Offset(r.center.dx, r.top - 20),
+          size: 19,
+          color: const Color(0xffffdf99),
+        );
+      }
       if (h.kind == 'machine') {
         if (ctrl.isDeveloper && ctrl.showHotspots) {
           c.drawRect(r, Paint()..color = const Color(0x3333ff66));
@@ -1139,6 +1156,23 @@ class InteractiveDevice extends PositionComponent
     final c = canvas, accent = machine.accent;
     c.save();
     c.translate(45 + motion.shake, 42 + press * 2);
+    if (ctrl.zoom && ctrl.guideTarget == control.id) {
+      c.drawCircle(
+        Offset.zero,
+        57,
+        Paint()
+          ..color = const Color(0xffffd681)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 4,
+      );
+      textAt(
+        c,
+        '↓ CHẠM',
+        const Offset(0, -72),
+        size: 16,
+        color: const Color(0xffffdf99),
+      );
+    }
     final enabled = evaluate(control.guard, state.values) != 0;
     final radius = control.kind == 'mirror' ? 27.0 : 38.0;
     glow(c, Offset.zero, radius + 12, Colors.black, strength: .8);

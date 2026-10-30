@@ -36,8 +36,9 @@ class _MechanicaAppState extends State<MechanicaApp>
       if (c.page == AppPage.play) c.pause();
       unawaited(c.audio.pause());
       unawaited(c.saveNow());
-    } else if (!c.paused) {
-      unawaited(c.audio.resume());
+    } else {
+      unawaited(c.cloud.sync(c.store));
+      if (!c.paused) unawaited(c.audio.resume());
     }
   }
 
@@ -77,6 +78,7 @@ class _MechanicaAppState extends State<MechanicaApp>
           }
         },
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: SafeArea(
             child: switch (c.page) {
               AppPage.home => HomeScreen(c),

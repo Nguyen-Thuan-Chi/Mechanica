@@ -1,3 +1,5 @@
+> Báo cáo V3 mới nhất: [V3_REPORT](V3_REPORT.md). Các bảng Phase 2/handover bên dưới giữ lịch sử, không phải số ca V3.
+
 # Kiểm thử Mechanica
 
 ## Phạm vi và phân loại
@@ -75,3 +77,45 @@ Trạng thái smoke APK cuối và sao lưu/khôi phục emulator được cập
 ## Chưa kiểm chứng
 
 Chưa kiểm tra trên điện thoại ARM thật, ma trận nhiều tỷ lệ/cutout, pin/RAM hoặc đo 60 FPS; chưa playtest độc lập và đánh giá nghe nhiều loa/tai nghe. Chưa nghiệm thu web hoặc Play Store. Các giới hạn này không được đổi thành PASS bằng unit test.
+
+
+## Kiểm thử V3
+
+- `test/v3_test.dart`: tutorial tài khoản mới, không nhảy bước khi thao tác sai, reload đúng bước, skip/replay/completed, hướng dẫn tới thắng với sao luyện tập; gợi ý từ trace và off-trace đủ 12 màn, tách guest/UID/outbox và validation form.
+- `test/ui_test.dart`: thêm mở Tài khoản chưa cấu hình ở ba cỡ landscape, không overflow.
+- `integration_test/onboarding_test.dart`: chạm chính mục được coach chỉ, hoàn thành màn 01, 3 sao và completed; ảnh intro/gears/complete.
+- `integration_test/firebase_test.dart`: Android Auth Emulator/Firestore thật, register/login/logout/reset, profile, query/transaction, offline queue/retry, dedupe attempts, thành tích tốt hơn, hai UID, download vào local store mới, Dev không upload.
+- `integration_test/account_ui_test.dart`: thao tác các form thật, email lỗi, đăng ký/hồ sơ/logout/reset/login với Emulator; xác minh bàn phím landscape không làm tràn.
+- `tools/firebase/rules.test.cjs`: owner/anonymous/cross-UID, field/type/range, unlock và thành tích đơn điệu, receipt bất biến.
+
+93 unit/widget tests và 6 rules tests đã chạy đạt trong V3. Lượt normal progression cả 12 màn + ending, tutorial, Firebase coordinator, account UI và Dev Mode cũng đã chạy trên Android. Kết quả lệnh build/analyze cuối, audio regression và các giới hạn được chốt trong V3_REPORT. Không tính test chưa chạy là PASS.
+
+Schema cloud version 3 khác schema local 1/2. Emulator là backend local thật, không thay cho kiểm tra project cloud của người dùng. Chưa kiểm chứng email tới inbox thật, deployment production hoặc đồng bộ giữa hai điện thoại vật lý.
+
+
+## Xác nhận workspace và cấu hình Firebase — 31/10/2026
+
+Người dùng xác nhận workspace chính thức là `C:\src\gamew\mechanica`, cũng là Git root. Không chuyển code từ bản khác trong lượt này.
+
+- `flutter pub get`: đạt.
+- `flutter analyze`: không có lỗi, chạy lại sau khi thêm test native.
+- `flutter test`: 94 bài đạt, gồm test đối chiếu native JSON với Dart Firebase options.
+- `npm test --prefix tools/firebase`: 6 bài Rules đạt trên Emulator; các log permission-denied trong trường hợp bị cấm là phản hồi mong đợi.
+- `dart format --output=none --set-exit-if-changed lib test integration_test`: đạt tại thời điểm kiểm tra; các file test mới được format khi tạo.
+- `flutter build apk --debug`: thành công với Google Services plugin và cấu hình project test thật.
+- `integration_test/firebase_configuration_test.dart` trên Android Emulator: đạt; chỉ khởi tạo và đối chiếu native Firebase app, không tạo tài khoản hoặc ghi dữ liệu.
+
+Đọc trực tiếp cấu hình project thật: CLI đã đăng nhập, Email/Password đã bật, Firestore mặc định ở asia-southeast1 đã tồn tại. Rules cloud vẫn deny-all tại thời điểm kiểm tra. Chưa xác nhận đăng ký/đồng bộ đầu cuối trên cloud thật. Xem log `docs/evidence/v3/workspace_*` và hướng dẫn Publish ở FIREBASE_SETUP.
+
+- Kiểm tra lại sau cấu hình native: Firebase Auth/Firestore integration và account UI integration trên Android Emulator đều đạt.
+- `flutter build apk --release`: thành công, entrypoint `lib/main.dart`; 74 asset trong APK khớp SHA-256 với manifest. Đây là bản ký debug phục vụ cài đặt trực tiếp, chưa phải bản phát hành Play Store.
+- Tóm tắt lượt này: `docs/evidence/v3/workspace_resume_summary.json`. Các kết quả V3 trước đó là lịch sử, không thay cho kiểm thử cloud sau Publish rules.
+
+
+## Sau deploy rules được người dùng cho phép — 31/10/2026
+
+- Deploy rules project test `mechanica-e9e41`: thành công; readback khớp repository.
+- `flutter analyze`: không có lỗi sau khi thêm test cloud thật.
+- `flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/firebase_cloud_test.dart --dart-define=FIREBASE_CLOUD_TEST=true -d emulator-5554`: đạt. SDK Android kết nối cloud thật; đăng ký/đăng nhập, hồ sơ, thành tích, chống retry, download, cross-UID và unauthenticated denial đều được xác nhận.
+- Hai Auth QA user và hai nhánh dữ liệu Firestore đã được dọn. Không gửi email reset thật.
+- Test này tách khỏi các bài Emulator; không chạy tự động trên project khác. Không coi đây là kiểm thử hai thiết bị vật lý hoặc email delivery.

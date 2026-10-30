@@ -6,11 +6,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app/controller.dart';
 import 'core/audio_service.dart';
+import 'core/cloud_service.dart';
 import 'core/persistence.dart';
 import 'game/puzzles/model.dart';
 import 'ui/app.dart';
 
-Future<GameController> bootstrap({bool audioEnabled = true}) async {
+Future<GameController> bootstrap({
+  bool audioEnabled = true,
+  bool cloudEnabled = false,
+}) async {
   final levels = PuzzleDefinition.decode(
     await rootBundle.loadString('assets/data/levels.json'),
   );
@@ -19,7 +23,10 @@ Future<GameController> bootstrap({bool audioEnabled = true}) async {
   await audio.initialize();
   await audio.configure(store.settings);
   if (audioEnabled) unawaited(audio.chapter(0));
-  return GameController(levels, store, audio);
+  final cloud = cloudEnabled ? await CloudService.initialize() : CloudService();
+  final controller = GameController(levels, store, audio, cloud: cloud);
+  if (cloud.user != null) await controller.activateAccount(waitForSync: false);
+  return controller;
 }
 
 Future<void> main() async {
@@ -31,7 +38,7 @@ Future<void> main() async {
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const LoadingApp());
   try {
-    runApp(MechanicaApp(controller: await bootstrap()));
+    runApp(MechanicaApp(controller: await bootstrap(cloudEnabled: true)));
   } catch (error, stack) {
     debugPrint('$error\n$stack');
     runApp(

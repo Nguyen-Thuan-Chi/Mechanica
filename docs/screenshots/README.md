@@ -14,3 +14,5 @@ Các JPEG được thu nhỏ/nén từ screenshot Android Phase 2, không sửa 
 | ending.jpg | p2_ending.png | Đoạn kết |
 
 Tổng tám JPEG khoảng 1,19 MB, dùng trong README/DEV_GUIDE. Nguồn art/font: [ASSET_CREDITS](../ASSET_CREDITS.md). Một vài nhãn đã được chỉnh sau thời điểm chụp; các ảnh vẫn là cảnh chạy thật của gameplay hiện hành.
+
+?nh `v3_tutorial.jpg` l? screenshot tutorial V3 ch?y th?t tr?n Android, thu nh? t? `docs/evidence/v3_onboarding_gears.png`.

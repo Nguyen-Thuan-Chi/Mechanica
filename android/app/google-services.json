@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "6334202356",
+    "project_id": "mechanica-e9e41",
+    "storage_bucket": "mechanica-e9e41.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6334202356:android:a3b9c3b60c4a1e8fa479a1",
+        "android_client_info": {
+          "package_name": "com.mechanica.mechanica"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVcRlnFvfE6LsBTqNr2lIR231OLrVymlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

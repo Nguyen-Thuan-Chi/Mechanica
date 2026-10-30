@@ -187,7 +187,9 @@ Future<void> showSettings(BuildContext context, GameController c) async {
                         if (await confirm(
                           ctx,
                           'Xóa toàn bộ tiến trình?',
-                          'Tất cả sao, màn đã mở và trạng thái đang chơi sẽ bị xóa trên thiết bị này. Cài đặt âm thanh được giữ.',
+                          c.store.uid == null
+                              ? 'Tất cả sao, màn đã mở và trạng thái đang chơi sẽ bị xóa trên thiết bị này. Cài đặt âm thanh được giữ.'
+                              : 'Chỉ xóa bản lưu trên thiết bị. Thành tích trên tài khoản sẽ được tải lại khi đồng bộ; thao tác này không xóa dữ liệu Firestore.',
                         )) {
                           await c.store.resetProgress();
                           c.session = null;

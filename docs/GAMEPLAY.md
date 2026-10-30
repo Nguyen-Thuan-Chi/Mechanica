@@ -61,3 +61,14 @@ Bất kỳ lần hoàn thành nào cũng mở màn kế tiếp; không bắt bu�
 ## Lưu tiến trình
 
 Lưu offline gồm màn mở/đã đạt sao, kết quả tốt nhất, tutorial, manh mối và trạng thái vật phẩm giữa màn. Hoàn tác history không được lưu xuyên process; resume giữ state và bộ đếm, không khôi phục danh sách mọi bước undo cũ. Xóa tiến trình trong settings cần xác nhận. Save lỗi được thử backup; state không hợp lệ sẽ bắt đầu lại màn với lời báo.
+
+
+## Tutorial và trợ giúp V3
+
+Màn 01 là luyện tập có chỉ dẫn theo state, có thể hoàn thành chỉ bằng mục được highlight. Đọc giấy → manh mối → ngăn đồ → túi → chọn/lắp khớp → đến máy → thay bánh/chiều/chốt → chạy. Intro cần bấm Bắt đầu sửa máy; các bước còn lại chỉ thay đổi sau hành động thật. Thao tác sai không tự nhảy bước. Skip và completed lưu riêng; người đã đạt màn 01 không bị bắt học lại. Menu pause có Hướng dẫn màn đầu để mở lại. Khi đang học màn 01, sao là 3 để không phạt việc thử/học; bỏ qua quay lại tính sao bình thường.
+
+Chỉ tôi cách làm hiện chỉ dẫn + lý do + highlight, cập nhật sau thao tác. Các màn sau vẫn tự giải; đây là tùy chọn trợ giúp, không tự vận hành máy. Ngoài trace mẫu, tìm kiếm giới hạn dùng chính reducer để xác minh đường đi hoặc rejoin trace; nếu hết ngân sách, hướng dẫn hoàn tác/đặt lại rõ ràng.
+
+Mỗi thông báo hoàn thành giải thích tác động tới màn sau. Chọn chương đếm máy đã sửa từ thành tích. Không thêm vật phẩm xuyên màn hoặc mô phỏng vật lý xuyên chương.
+
+Đăng nhập tùy chọn; guest và UID tách biệt. Cloud đồng bộ thành tích/unlock, **không mang state giữa màn sang thiết bị khác**. Không lưu mật khẩu trong game. Xem [FIREBASE_SETUP](FIREBASE_SETUP.md).

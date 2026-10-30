@@ -6,9 +6,9 @@
       "number": 1,
       "chapter": 0,
       "title": "Tia lửa đầu tiên",
-      "goal": "Căn phòng vẫn còn một nguồn lực yếu ớt. Hãy tìm bộ phận còn thiếu và đánh thức cánh cửa đầu tiên.",
+      "goal": "Máy phát điện đã ngừng hoạt động. Bạn cần sửa nó để mở cánh cửa phía trước.",
       "note": "Trên bản vẽ, bánh ở trục cửa quay hai vòng khi bánh nguồn quay một vòng. Mũi tên ở cả hai đầu cùng hướng. Bánh lớn kéo bánh nhỏ sẽ làm bánh nhỏ quay nhanh hơn; mỗi lần hai bánh ăn răng, chiều quay đổi lại. Bánh giữa đã nằm sẵn trên trục. Một nét bút khoanh riêng chốt an toàn: phải nhấc chốt trước khi kéo cần.",
-      "story": "Trong lớp bụi, một dòng chữ còn rõ: “Đừng đánh thức tất cả cùng một lúc.”",
+      "story": "Bạn đã sửa thành công cỗ máy đầu tiên! Những căn phòng tiếp theo sẽ cần bạn tự tìm manh mối và vận dụng những gì đã học. Năng lượng giờ đã tới tháp đồng hồ, nhưng ba kim vẫn chạy lệch nhau.",
       "introduced_rule": "Tỷ số răng, chiều quay và khóa chống ngược",
       "initial": {
         "inspected": 0,
@@ -576,7 +576,7 @@
         ]
       },
       "tutorial": "Chạm đồ vật trong phòng để quan sát. Đồ nhặt được nằm trong Túi đồ; chọn đồ rồi chạm nơi cần sửa.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Bạn đã sửa thành công cỗ máy đầu tiên! Những căn phòng tiếp theo sẽ cần bạn tự tìm manh mối và vận dụng những gì đã học. Năng lượng giờ đã tới tháp đồng hồ, nhưng ba kim vẫn chạy lệch nhau.",
       "room": {
         "items": [
           {
@@ -602,7 +602,7 @@
             "id": "journal",
             "kind": "intro",
             "title": "Ghi chép bỏ lại",
-            "text": "Một trang giấy mắc dưới chiếc đèn. Căn phòng vẫn còn một nguồn lực yếu ớt. Hãy tìm bộ phận còn thiếu và đánh thức cánh cửa đầu tiên.",
+            "text": "Máy phát điện đã dừng vì thiếu khớp nối. Tìm linh kiện trong ngăn dụng cụ rồi lắp vào ổ trục bên phải.",
             "rect": [
               95,
               125,
@@ -690,9 +690,9 @@
       "number": 2,
       "chapter": 0,
       "title": "Đồng hồ không kim",
-      "goal": "Ba chiếc đồng hồ đã ngừng chạy. Hãy tìm dấu vết người thợ để biết chúng từng chỉ về đâu.",
+      "goal": "Năng lượng giờ đã tới tháp đồng hồ, nhưng ba kim vẫn chạy lệch nhau. Ba chiếc đồng hồ đã ngừng chạy. Hãy tìm dấu vết người thợ để biết chúng từng chỉ về đâu.",
       "note": "Tờ lịch bảo dưỡng ghi: chiếc bên trái dừng ở vạch thứ ba, chiếc giữa ở vạch thứ năm, chiếc phải ở vạch thứ tư. Mỗi mặt số có sáu vạch. Cần giữa chọn hai đồng hồ cùng chạy; mỗi lần kéo cần nhịp, cả hai tiến một vạch. Chốt giữ chỉ khép khi cả ba cùng trở về những vạch cũ.",
-      "story": "Ba mặt đồng hồ không đo thời gian. Chúng đếm những lần người gác máy quay trở lại.",
+      "story": "Những đồng hồ đã cùng nhịp. Tín hiệu vừa đánh thức lò hơi ở cuối xưởng; một khớp ống vẫn đang rò.",
       "introduced_rule": "Ly hợp ghép cặp và đồng dư",
       "initial": {
         "inspected": 0,
@@ -1181,7 +1181,7 @@
       ],
       "mass_fields": [],
       "tutorial": "Chọn một món trong Túi đồ rồi chọn món còn lại để ghép. Cần giữa máy đổi cặp đồng hồ cùng chuyển động.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Những đồng hồ đã cùng nhịp. Tín hiệu vừa đánh thức lò hơi ở cuối xưởng; một khớp ống vẫn đang rò.",
       "room": {
         "items": [
           {
@@ -1311,9 +1311,9 @@
       "number": 3,
       "chapter": 0,
       "title": "Trái tim lò hơi",
-      "goal": "Hơi nước đang thoát ra khỏi một khớp nối. Sửa chỗ rò rồi tìm cách dùng sức hơi mở cửa.",
+      "goal": "Tín hiệu vừa đánh thức lò hơi ở cuối xưởng; một khớp ống vẫn đang rò. Hơi nước đang thoát ra khỏi một khớp nối. Sửa chỗ rò rồi tìm cách dùng sức hơi mở cửa.",
       "note": "Vạch xanh trên đồng hồ hơi trải từ 4 đến 6. Khi chưa nối bộ truyền, mỗi nhịp bơm thêm hai vạch áp. Khi đã nối, máy dùng bớt hơi và tích lực đẩy. Cần hai nhịp lấy lực rồi mới kéo cửa. Kim vượt vạch 7 sẽ khiến van tự xả. Van xả đóng lại được; có thể tích hơi từ đầu.",
-      "story": "Khi cánh cửa đầu tiên mở, hơi ấm thoát ra như một nhịp thở. Công trình này vẫn đang chờ ai đó.",
+      "story": "Nguồn lực của xưởng đã liền mạch. Hơi đẩy cánh cửa xuống thư viện, nơi những bể nước đang lệch nhau.",
       "introduced_rule": "Áp suất, mô-men và cửa sổ an toàn",
       "initial": {
         "inspected": 0,
@@ -1799,7 +1799,7 @@
       ],
       "mass_fields": [],
       "tutorial": "Gạt cần bằng cách kéo lên hoặc xuống. Quan sát kim sau mỗi nhịp; có thể dừng để suy nghĩ.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Nguồn lực của xưởng đã liền mạch. Hơi đẩy cánh cửa xuống thư viện, nơi những bể nước đang lệch nhau.",
       "room": {
         "items": [
           {
@@ -1915,9 +1915,9 @@
       "number": 4,
       "chapter": 1,
       "title": "Bình cân bằng",
-      "goal": "Cửa thư viện bị giữ bởi những bình nước lệch nhau. Có một cách cân bằng chúng mà không bỏ phí giọt nào.",
+      "goal": "Hơi đẩy cánh cửa xuống thư viện, nơi những bể nước đang lệch nhau. Cửa thư viện bị giữ bởi những bình nước lệch nhau. Có một cách cân bằng chúng mà không bỏ phí giọt nào.",
       "note": "Dòng chữ sau vỏ đồng hồ: “Chia đều tám phần cho hai bình giữ cửa. Bình nhỏ chỉ để đong.” Ba bình chứa tối đa tám, năm và ba phần. Bơm luôn chuyển đến khi bình nhận đầy hoặc bình nguồn cạn. Dấu khắc ở cửa cho phép bình nhỏ còn nhiều nhất hai phần; nước không biến mất khi đổi đường.",
-      "story": "Nước vẫn trong. Những cuốn sách sau lớp kính đã được giữ nguyên qua nhiều thế hệ.",
+      "story": "Bể chứa đã cân bằng. Nước có thể đi sâu vào thư viện, nhưng dòng đục vẫn đe dọa những trang ký ức.",
       "introduced_rule": "Bảo toàn thể tích và dung tích khác nhau",
       "initial": {
         "inspected": 0,
@@ -2514,7 +2514,7 @@
         "c"
       ],
       "tutorial": "Chạm van để xoay một nấc. Kéo cần bơm một lần rồi nhìn xem bình nào đầy, bình nào vơi.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Bể chứa đã cân bằng. Nước có thể đi sâu vào thư viện, nhưng dòng đục vẫn đe dọa những trang ký ức.",
       "room": {
         "items": [
           {
@@ -2644,9 +2644,9 @@
       "number": 5,
       "chapter": 1,
       "title": "Nước qua ký ức",
-      "goal": "Những trang ký ức cần nước trong để hiện lại. Hãy tìm cách đưa nước sạch đến hai bình lưu trữ.",
+      "goal": "Nước có thể đi sâu vào thư viện, nhưng dòng đục vẫn đe dọa những trang ký ức. Những trang ký ức cần nước trong để hiện lại. Hãy tìm cách đưa nước sạch đến hai bình lưu trữ.",
       "note": "Hai trang nhãn còn đọc được: bình bên trái cần hai phần nước trong, bình bên phải cần bốn. Có ba phần sạch và ba phần đục. Màng lọc giữ được cặn của ba phần nước, rồi hết khả năng lọc. Chỉ một phần nước đục cũng làm bẩn cả bình nhận. Hãy chọn nguồn và đường đi trước khi bơm.",
-      "story": "Trong ống kính hiện lên một vườn cây. Thư viện không lưu sách; nó lưu ký ức về sự sống.",
+      "story": "Dòng nước đã trong trở lại. Hai nhánh sạch dẫn tới cửa thủy lực; cần giữ áp trước khi rút nước khỏi lối đi.",
       "introduced_rule": "Chất lượng nước và ngân sách lọc",
       "initial": {
         "inspected": 0,
@@ -3248,7 +3248,7 @@
         "b"
       ],
       "tutorial": "Nhìn cả mức nước và dấu sạch/đục dưới bình. Màng lọc chỉ hao khi nước đục đi qua.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Dòng nước đã trong trở lại. Hai nhánh sạch dẫn tới cửa thủy lực; cần giữ áp trước khi rút nước khỏi lối đi.",
       "room": {
         "items": [
           {
@@ -3362,9 +3362,9 @@
       "number": 6,
       "chapter": 1,
       "title": "Cánh cửa thủy áp",
-      "goal": "Nước đang đè nặng lên cửa. Hãy tìm cách giữ hai bên cân bằng trước khi rút nước khỏi lối đi.",
+      "goal": "Hai nhánh sạch dẫn tới cửa thủy lực; cần giữ áp trước khi rút nước khỏi lối đi. Nước đang đè nặng lên cửa. Hãy tìm cách giữ hai bên cân bằng trước khi rút nước khỏi lối đi.",
       "note": "Bản vẽ cạnh bánh khóa có hai vạch ngang cùng độ cao: ba phần nước ở mỗi khoang giữ cửa. Khi cả hai đạt vạch, chốt giữa giữ lại thế cân bằng. Chỉ lúc đó mới được rút một phần khỏi khoang cửa vào bể kín phía dưới. Cố rút trước, van an toàn sẽ trả nước về vị trí ban đầu.",
-      "story": "Dưới chân cửa là dấu bàn tay nhỏ. Người xây máy đã định đưa cả gia đình đến đây.",
+      "story": "Cửa thủy lực đã mở. Bạn lên được đài thiên văn, nơi đường ánh sáng đầu tiên đã tắt từ lâu.",
       "introduced_rule": "Cân bằng áp, chốt nhớ và checkpoint",
       "initial": {
         "inspected": 0,
@@ -3919,7 +3919,7 @@
         "drain"
       ],
       "tutorial": "Một chốt có thể giữ lại điều đã làm được. Hãy quan sát nó trước khi đổi đường nước.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Cửa thủy lực đã mở. Bạn lên được đài thiên văn, nơi đường ánh sáng đầu tiên đã tắt từ lâu.",
       "room": {
         "items": [
           {
@@ -4034,9 +4034,9 @@
       "number": 7,
       "chapter": 2,
       "title": "Con mắt ánh sáng",
-      "goal": "Hai con mắt bằng kính đang chờ ánh sáng. Khôi phục nguồn sáng rồi lần theo những dấu khắc trên viền.",
+      "goal": "Bạn lên được đài thiên văn, nơi đường ánh sáng đầu tiên đã tắt từ lâu. Hai con mắt bằng kính đang chờ ánh sáng. Khôi phục nguồn sáng rồi lần theo những dấu khắc trên viền.",
       "note": "Mũi tên trên mắt bên trên chỉ lên; mắt bên phải chỉ sang phải. Gương nghiêng hắt tia sang góc vuông. Mắt trên còn cho tia đi qua để đến gương tiếp theo. Khe chắn nằm giữa đường: đóng khe thì gương phía sau dù quay đúng cũng không nhận được ánh sáng.",
-      "story": "Một tia sáng xuyên qua bụi sao. Trên trần, bản đồ của một bầu trời xa lạ dần hiện ra.",
+      "story": "Ánh sáng đã nối lại giữa các mắt kính. Phía trên, tinh thể màu vẫn không chịu nổi tia sáng nguyên vẹn.",
       "introduced_rule": "Hình học phản xạ và hướng nhận",
       "initial": {
         "inspected": 0,
@@ -4455,7 +4455,7 @@
         ]
       },
       "tutorial": "Chạm gương để đổi góc nghiêng. Tia sáng đi thật qua các gương; mũi tên trên mắt chỉ hướng nhận.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Ánh sáng đã nối lại giữa các mắt kính. Phía trên, tinh thể màu vẫn không chịu nổi tia sáng nguyên vẹn.",
       "room": {
         "items": [
           {
@@ -4569,9 +4569,9 @@
       "number": 8,
       "chapter": 2,
       "title": "Sắc phổ vỡ",
-      "goal": "Ánh sáng trắng quá mạnh với tinh thể mỏng. Hãy tìm cách chia nó thành những dòng dịu hơn.",
+      "goal": "Phía trên, tinh thể màu vẫn không chịu nổi tia sáng nguyên vẹn. Ánh sáng trắng quá mạnh với tinh thể mỏng. Hãy tìm cách chia nó thành những dòng dịu hơn.",
       "note": "Ba mắt có viền đỏ, xanh lá và xanh lam. Chúng chỉ nhận đúng màu của mình. Lăng kính tách một tia mạnh thành ba tia nhẹ; bộ lọc giữ lại một màu, không làm tia mạnh yếu đi. Tinh thể có vết nứt không chịu được tia trực tiếp. Hãy đổi hướng tia trước khi bật nguồn.",
-      "story": "Màu sắc không phải mật mã. Chúng là chỉ dẫn để đánh thức những hạt giống đang ngủ.",
+      "story": "Các dòng màu đã dịu và đúng hướng. Chúng soi lộ bản đồ sao chỉ giữ được từng nửa bầu trời.",
       "introduced_rule": "Bộ chia, mặt nạ màu và cường độ",
       "initial": {
         "inspected": 0,
@@ -5227,7 +5227,7 @@
         ]
       },
       "tutorial": "Bộ lọc và lăng kính có việc khác nhau. Có thể tắt nguồn trong lúc đổi đường tia.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Các dòng màu đã dịu và đúng hướng. Chúng soi lộ bản đồ sao chỉ giữ được từng nửa bầu trời.",
       "room": {
         "items": [
           {
@@ -5357,9 +5357,9 @@
       "number": 9,
       "chapter": 2,
       "title": "Bản đồ tinh tú",
-      "goal": "Bầu trời trên trần đã mất một nửa. Có lẽ bộ máy nhớ được những ngôi sao không sáng cùng lúc.",
+      "goal": "Chúng soi lộ bản đồ sao chỉ giữ được từng nửa bầu trời. Bầu trời trên trần đã mất một nửa. Có lẽ bộ máy nhớ được những ngôi sao không sáng cùng lúc.",
       "note": "Nét mực trên bản đồ: “Giữ sao Bắc trước. Khi ký ức đã lưu, nhường đường cho sao Nam.” Hai khe chắn tách hai con đường. Cần ghi nhớ chỉ hoạt động khi sao Bắc sáng, sao Nam tối. Sau đó đóng đường Bắc, đổi các gương cần thiết và mở đường Nam; ký ức Bắc vẫn ở lại.",
-      "story": "Bản đồ không dẫn đến một hành tinh. Nó ghi lại đường trở về, nếu một ngày thế giới ngoài kia hồi sinh.",
+      "story": "Bản đồ sao đã giữ cả Bắc lẫn Nam. Tọa độ dẫn tới lõi vĩnh cửu; đường làm lạnh nơi đó đã bị đứt.",
       "introduced_rule": "Bộ nhớ quang học hai pha",
       "initial": {
         "inspected": 0,
@@ -6018,7 +6018,7 @@
         ]
       },
       "tutorial": "Nút ghi nhớ giữ lại một phần bầu trời. Đóng đường cũ trước khi mở đường mới.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Bản đồ sao đã giữ cả Bắc lẫn Nam. Tọa độ dẫn tới lõi vĩnh cửu; đường làm lạnh nơi đó đã bị đứt.",
       "room": {
         "items": [
           {
@@ -6134,9 +6134,9 @@
       "number": 10,
       "chapter": 3,
       "title": "Vòng tuần hoàn",
-      "goal": "Lõi máy vẫn còn nóng. Hãy sửa đường làm lạnh trước khi thử đánh thức nó.",
+      "goal": "Tọa độ dẫn tới lõi vĩnh cửu; đường làm lạnh nơi đó đã bị đứt. Lõi máy vẫn còn nóng. Hãy sửa đường làm lạnh trước khi thử đánh thức nó.",
       "note": "Bơm lạnh cần khớp truyền mạnh và van dẫn vào lõi. Khi đủ nước, mỗi nhịp lấy đi bốn phần nhiệt. Mỗi bậc công suất lại thêm hai phần nhiệt. Lõi cần công suất ở bậc thứ hai, kim nhiệt nằm trong vùng xanh và giữ yên ba nhịp. Vượt vạch 8, máy tự ngắt để bảo vệ buồng trong.",
-      "story": "Dòng lạnh trở lại. Trên thành lõi hiện ra biểu tượng một chiếc lá, không phải một tia chớp.",
+      "story": "Nước lạnh đã giữ được sức nóng của lõi. Ba khóa an toàn phía trước giờ có thể nhận lực theo đúng thứ tự.",
       "introduced_rule": "Ngân sách nhiệt và ổn định liên tục",
       "initial": {
         "inspected": 0,
@@ -6700,7 +6700,7 @@
       ],
       "mass_fields": [],
       "tutorial": "Một nhịp cho máy chạy từng bước; Chạy để chạy liên tục, Dừng để kiểm tra. Đừng vội tăng công suất.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Nước lạnh đã giữ được sức nóng của lõi. Ba khóa an toàn phía trước giờ có thể nhận lực theo đúng thứ tự.",
       "room": {
         "items": [
           {
@@ -6814,9 +6814,9 @@
       "number": 11,
       "chapter": 3,
       "title": "Ba khóa an toàn",
-      "goal": "Ba chốt giữ cánh cửa cuối hành lang. Tìm xem chốt nào nuôi sức cho những chốt còn lại.",
+      "goal": "Ba khóa an toàn phía trước giờ có thể nhận lực theo đúng thứ tự. Ba chốt giữ cánh cửa cuối hành lang. Tìm xem chốt nào nuôi sức cho những chốt còn lại.",
       "note": "Ba hình khắc nối thành chuỗi: bánh răng → bình hơi → con mắt. Chốt cơ cần bộ truyền mạnh; có nó bơm mới giữ được hơi. Khi áp ở vạch 3, đóng van rồi giữ chốt nước. Chốt nước cấp điện cho đèn kiểm tra. Đổi bộ truyền hoặc để áp trôi sẽ làm các chốt phía sau rơi xuống.",
-      "story": "Ba hệ thống không canh giữ một bí mật. Chúng bảo vệ một điều mong manh hơn.",
+      "story": "Ba khóa đã cùng giữ. Cỗ máy cuối cùng đã nhận đủ đường truyền, nước và ánh sáng; hãy đưa chúng về cùng một nhịp.",
       "introduced_rule": "Liên động và mất điều kiện duy trì",
       "initial": {
         "inspected": 0,
@@ -7483,7 +7483,7 @@
         ]
       },
       "tutorial": "Theo dõi các chốt đang sáng. Đổi một bộ phận phía trước có thể làm chốt phía sau nhả ra.",
-      "completion": "Những tiếng động rời rạc đã tìm được cùng một nhịp. Cánh cửa trước mặt đang mở.",
+      "completion": "Ba khóa đã cùng giữ. Cỗ máy cuối cùng đã nhận đủ đường truyền, nước và ánh sáng; hãy đưa chúng về cùng một nhịp.",
       "room": {
         "items": [
           {
@@ -7599,9 +7599,9 @@
       "number": 12,
       "chapter": 3,
       "title": "Cỗ máy cuối cùng",
-      "goal": "Tất cả đường ống đều dẫn tới đây. Hãy nối lại những bộ phận còn thiếu và để cỗ máy tự giữ nhịp sống.",
+      "goal": "Cỗ máy cuối cùng đã nhận đủ đường truyền, nước và ánh sáng; hãy đưa chúng về cùng một nhịp. Tất cả đường ống đều dẫn tới đây. Hãy nối lại những bộ phận còn thiếu và để cỗ máy tự giữ nhịp sống.",
       "note": "Trang cuối chia làm ba đoạn. Đầu tiên, nối bộ truyền mạnh, cho bơm hồi lưu đến vạch áp 4 rồi giữ chốt hiệu chỉnh. Sau đó đưa nước vào lõi, dẫn tia lên mắt và nâng công suất lên bậc hai để giữ chốt đồng bộ. Cuối cùng, để máy chạy bốn nhịp với nhiệt trong vùng xanh. Mất nền áp, ánh sáng hoặc nước lạnh thì chuỗi phải bắt đầu lại. Chốt cuối không cần sức mạnh hơn; nó cần sự ổn định.",
-      "story": "Cỗ máy chưa từng là một nguồn vũ khí. Nó là khu vườn cuối cùng — chờ bàn tay đủ kiên nhẫn để mở cửa.",
+      "story": "Bạn đã đưa toàn bộ đường truyền, nước lạnh và ánh sáng về cùng nhịp. Cỗ máy tự giữ được sự sống; khu vườn sau cánh cửa đang thức dậy.",
       "introduced_rule": "Hiệu chỉnh nhiều giai đoạn và ràng buộc xuyên hệ thống",
       "initial": {
         "inspected": 0,
@@ -8783,7 +8783,7 @@
         ]
       },
       "tutorial": "Nút Toàn bộ đưa bạn tới từng cụm máy. Trở về Căn phòng để xem lại đồ vật và ghi chú bất cứ lúc nào.",
-      "completion": "Cỗ máy đã tự giữ được nhịp sống. Sau cánh cửa, khu vườn đầu tiên đang thức dậy.",
+      "completion": "Bạn đã đưa toàn bộ đường truyền, nước lạnh và ánh sáng về cùng nhịp. Cỗ máy tự giữ được sự sống; khu vườn sau cánh cửa đang thức dậy.",
       "room": {
         "items": [
           {

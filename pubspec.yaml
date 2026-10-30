@@ -1,7 +1,7 @@
 name: mechanica
 description: "Mechanica — Vietnamese offline mechanical puzzle adventure with twelve levels."
 publish_to: 'none'
-version: 1.1.0+2
+version: 1.2.0+3
 
 environment:
   sdk: ^3.13.5
@@ -13,6 +13,9 @@ dependencies:
   flame: ^1.38.2
   flame_audio: ^2.12.2
   shared_preferences: ^2.5.6
+  firebase_core: ^5.1.0
+  firebase_auth: ^7.0.1
+  cloud_firestore: ^7.1.0
 
 dev_dependencies:
   flutter_test:

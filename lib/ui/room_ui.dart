@@ -206,7 +206,12 @@ class InventoryPanel extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: selected ? const Color(0xff3d3322) : const Color(0xff101b24),
-        border: Border.all(color: selected ? gold : const Color(0xff48504d)),
+        border: Border.all(
+          color: selected || c.guideTarget == item.id
+              ? gold
+              : const Color(0xff48504d),
+          width: c.guideTarget == item.id ? 3 : 1,
+        ),
         borderRadius: BorderRadius.circular(7),
       ),
       child: Column(

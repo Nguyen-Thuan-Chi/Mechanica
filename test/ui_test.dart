@@ -48,6 +48,16 @@ void main() {
         await tester.ensureVisible(find.text('Trở lại'));
         await tester.tap(find.text('Trở lại'));
         await tester.pump(const Duration(milliseconds: 400));
+        await tester.tap(find.text('Tài khoản'));
+        await tester.pump(const Duration(milliseconds: 400));
+        expect(
+          find.textContaining('Chế độ tài khoản chưa được cấu hình'),
+          findsOneWidget,
+        );
+        expect(tester.takeException(), isNull);
+        await tester.ensureVisible(find.text('Trở về game'));
+        await tester.tap(find.text('Trở về game'));
+        await tester.pump(const Duration(milliseconds: 400));
         c.navigate(AppPage.chapters);
         await tester.pump();
         expect(tester.takeException(), isNull);

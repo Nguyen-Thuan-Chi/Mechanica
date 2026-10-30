@@ -1,6 +1,7 @@
 import '../mechanics/optics.dart';
 import '../mechanics/gears.dart';
 import 'model.dart';
+import 'guidance.dart';
 
 class PuzzleReducer {
   const PuzzleReducer(this.definition);
@@ -230,6 +231,7 @@ class PuzzleSession {
   final List<UndoSnapshot> history = [];
   final List<GameEvent> eventLog = [];
   int hintsUsed = 0, undoCount = 0;
+  bool tutorialPractice = false;
   ValidationResult act(PuzzleAction action) {
     final result = reducer.apply(state, action);
     if (result.accepted && action.id != 'ACT_INSPECT') {
@@ -289,32 +291,21 @@ class PuzzleSession {
       return 'Chọn ${room.items.last.name.toLowerCase()} trong Túi đồ, rồi chạm ${room.repairTitle.toLowerCase()} ở bên phải phòng để lắp.';
     }
     if (tier < 2) return definition.hints[tier];
-    // A next-step hint is only emitted if the current physical state matches a
-    // state in the verified trace. Otherwise give a valid recovery principle.
-    var cursor = reducer.initial();
-    for (final id in definition.solution) {
-      if (_same(cursor, state)) {
-        if (id == 'ACT_INSPECT') {
-          return 'Chạm bản khắc phát sáng trong phòng để đọc quy tắc.';
-        }
-        final c = definition.control(id)!;
-        if (evaluate(c.guard, state.values) != 0) {
-          return 'Thử thao tác tiếp theo: ${c.label}. ${c.help}';
-        }
-      }
-      cursor = reducer.apply(cursor, PuzzleAction(id)).state;
-    }
-    return '${definition.hints[2]} Bạn có thể hoàn tác bước vừa làm hoặc đặt lại máy.';
+    final help = GuidanceEngine.solve(
+      definition,
+      state,
+      maxStates: 400,
+      milliseconds: 12,
+    );
+    return '${help.instruction} ${help.reason}';
   }
 
-  bool _same(PuzzleState a, PuzzleState b) =>
-      a.values.length == b.values.length &&
-      a.values.entries.every((e) => b.values[e.key] == e.value);
-  int get stars =>
-      hintsUsed == 0 &&
-          state.errors == 0 &&
-          undoCount == 0 &&
-          state.moves <= definition.targetMoves
+  int get stars => tutorialPractice && definition.number == 1
+      ? 3
+      : hintsUsed == 0 &&
+            state.errors == 0 &&
+            undoCount == 0 &&
+            state.moves <= definition.targetMoves
       ? 3
       : hintsUsed <= 2 && state.moves <= definition.targetMoves * 2
       ? 2

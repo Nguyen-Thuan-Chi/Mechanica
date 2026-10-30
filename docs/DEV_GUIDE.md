@@ -30,7 +30,7 @@ Dữ liệu thử dùng `mechanica_development_v2` / `mechanica_development_back
 
 ## Build và version code
 
-Source hiện là `1.1.0+2`. Lệnh release tiêu chuẩn:
+Source hiện là `1.2.0+3`. Lệnh release tiêu chuẩn:
 
 ```sh
 flutter build apk --release
@@ -84,3 +84,18 @@ Bài hành trình xóa save thường trước khi chạy. Các bài khác cũng
 Giữ source, lockfile, cấu hình Android, assets và license, test, tools và tài liệu. Giữ GDD/Art Bible/master prompt để truy nguyên thiết kế. Cache, backup ZIP, bằng chứng thô và tư liệu tham chiếu chưa xác minh quyền phân phối được giữ local nhưng ignore. `.gitignore` không gỡ file đã được track từ trước; ở repository đã có Git cần kiểm tra lại trước khi stage.
 
 Workspace bàn giao chưa tự commit/push hoặc tạo GitHub Release. Người dùng kiểm tra bản preview rồi tự thực hiện bước cuối.
+
+
+## V3: Firebase và tutorial
+
+Version hiện tại `1.2.0+3`. Setup project thật/Emulator và lệnh chạy ở [FIREBASE_SETUP](FIREBASE_SETUP.md). Build mặc định đã cấu hình project test `mechanica-e9e41`; rules cloud đã deploy và kiểm thử trên project test theo tài liệu setup. Dùng `--dart-define=FIREBASE_OFFLINE=true` để tắt cloud. Bản debug Emulator cần `--dart-define=FIREBASE_EMULATOR=true`; release không chấp nhận chế độ này.
+
+Dev Menu thêm Thử tutorial từ đầu và Giả lập đã học xong, chỉ tác động flags của store thử. Để test tài khoản, dùng nút Tài khoản ngoài menu chính với Emulator. Không đưa điểm Dev lên cloud. Các bài `firebase_test.dart`/`account_ui_test.dart` phải dùng flags Emulator, không chạy lên production.
+
+```sh
+flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/onboarding_test.dart -d emulator-5554
+flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/firebase_test.dart --dart-define=FIREBASE_EMULATOR=true -d emulator-5554
+flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/account_ui_test.dart --dart-define=FIREBASE_EMULATOR=true -d emulator-5554
+```
+
+`tools/v3_content.py` nối hệ quả giữa các màn và được gọi bởi `author_levels.py`; không thay guards/solution. Sau cập nhật dữ liệu chạy manifest checker. Node dependencies trong tools/firebase/node_modules được ignore/exclude khỏi analyze.

@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owner(uid) { return request.auth != null && request.auth.uid == uid; }
+    function level(id) { return id.matches('LV(0[1-9]|1[0-2])'); }
+    function number(v, lo, hi) { return v is int && v >= lo && v <= hi; }
+    match /users/{uid} {
+      allow read: if owner(uid);
+      allow create: if owner(uid)
+        && request.resource.data.keys().hasAll(['displayName','email','createdAt','lastPlayedAt','tutorialCompleted','schemaVersion'])
+        && request.resource.data.keys().hasOnly(['displayName','email','createdAt','lastPlayedAt','tutorialCompleted','schemaVersion'])
+        && request.resource.data.displayName is string && request.resource.data.displayName.size() <= 60
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.createdAt == request.time && request.resource.data.lastPlayedAt == request.time
+        && request.resource.data.tutorialCompleted == false && request.resource.data.schemaVersion == 3;
+      allow update: if owner(uid)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['displayName','lastPlayedAt','tutorialCompleted'])
+        && request.resource.data.displayName is string && request.resource.data.displayName.size() <= 60
+        && request.resource.data.lastPlayedAt == request.time
+        && request.resource.data.tutorialCompleted is bool
+        && (!resource.data.tutorialCompleted || request.resource.data.tutorialCompleted);
+      match /progress/{id} {
+        allow read: if owner(uid);
+        allow create, update: if owner(uid) && id == 'current'
+          && request.resource.data.keys().hasAll(['unlockedLevel','currentLevel','completedLevels','lastSavedAt','saveVersion'])
+          && request.resource.data.keys().hasOnly(['unlockedLevel','currentLevel','completedLevels','lastSavedAt','saveVersion'])
+          && number(request.resource.data.unlockedLevel,1,12) && level(request.resource.data.currentLevel)
+          && request.resource.data.completedLevels is list
+          && request.resource.data.completedLevels.size() <= 12
+          && request.resource.data.completedLevels.hasOnly(['LV01','LV02','LV03','LV04','LV05','LV06','LV07','LV08','LV09','LV10','LV11','LV12'])
+          && request.resource.data.lastSavedAt == request.time && request.resource.data.saveVersion == 3
+          && (!exists(/databases/$(database)/documents/users/$(uid)/progress/current)
+            || (request.resource.data.unlockedLevel >= resource.data.unlockedLevel
+              && request.resource.data.completedLevels.hasAll(resource.data.completedLevels)));
+      }
+      match /levelResults/{id} {
+        allow read: if owner(uid);
+        allow create, update: if owner(uid) && level(id)
+          && request.resource.data.keys().hasAll(['completed','bestStars','bestMoves','bestTimeSeconds','attempts','lastCompletedAt'])
+          && request.resource.data.keys().hasOnly(['completed','bestStars','bestMoves','bestTimeSeconds','attempts','lastCompletedAt'])
+          && request.resource.data.completed == true
+          && number(request.resource.data.bestStars,1,3) && number(request.resource.data.bestMoves,0,100000)
+          && number(request.resource.data.bestTimeSeconds,0,86400) && number(request.resource.data.attempts,1,1000000)
+          && request.resource.data.lastCompletedAt == request.time
+          && (!exists(/databases/$(database)/documents/users/$(uid)/levelResults/$(id))
+            || (request.resource.data.bestStars >= resource.data.bestStars
+              && request.resource.data.bestMoves <= resource.data.bestMoves
+              && request.resource.data.bestTimeSeconds <= resource.data.bestTimeSeconds
+              && request.resource.data.attempts == resource.data.attempts + 1));
+      }
+      match /syncEvents/{id} {
+        allow read: if owner(uid);
+        allow create: if owner(uid) && id.size() <= 180
+          && request.resource.data.keys().hasOnly(['kind','createdAt'])
+          && request.resource.data.kind in ['progress','result'] && request.resource.data.createdAt == request.time;
+      }
+    }
+  }
+}

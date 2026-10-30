@@ -1,6 +1,6 @@
 # Kiến trúc Mechanica
 
-Tài liệu mô tả source 1.1.0+2. Flutter cung cấp UI và lifecycle; Flame vẽ môi trường, thiết bị và xử lý tương tác trong cảnh. Luật giải đố được đặt trong các lớp Dart riêng để kiểm thử mà không cần renderer.
+Tài liệu mô tả source 1.2.0+3. Flutter cung cấp UI và lifecycle; Flame vẽ môi trường, thiết bị và xử lý tương tác trong cảnh. Luật giải đố được đặt trong các lớp Dart riêng để kiểm thử mà không cần renderer.
 
 ## Luồng tổng thể
 
@@ -34,7 +34,7 @@ flowchart TD
 | Persistence | `lib/core/persistence.dart` | JSON versioned, bản chính/dự phòng, hàng đợi ghi, validation và migration |
 | Audio | `lib/core/audio_service.dart` | Một BGM loop, bốn voice SFX, fade và lifecycle |
 
-Không có backend, Firebase, tài khoản hoặc database server. State management dùng `ChangeNotifier`/`AnimatedBuilder`; không dùng Bloc/Riverpod.
+Gameplay và save offline không phụ thuộc backend. V3 bổ sung Firebase Authentication và Firestore qua `CloudService` cho tài khoản và đồng bộ thành tích. State management dùng `ChangeNotifier`/`AnimatedBuilder`; không dùng Bloc/Riverpod.
 
 ## Chuyển trạng thái
 
@@ -65,3 +65,12 @@ Save thường dùng `mechanica_save_v1` và `mechanica_save_backup` (tên key g
 ## Phạm vi nền tảng
 
 Android manifest khóa `sensorLandscape`; main cũng yêu cầu hai hướng landscape. SDK thực tế, quyền hợp nhất và version của APK cuối được ghi tại [TESTING](TESTING.md). `web/` là scaffold, chưa là nền tảng nghiệm thu.
+
+
+## Bổ sung V3
+
+`GuidanceEngine`/`Onboarding` xác định mục tiêu hướng dẫn từ PuzzleState, inventory và zoom. `guidance_overlay.dart` đặt coach đối diện vật thể; renderer Flame vẽ highlight. `GuidanceEngine.next` chạy isolate, tối đa 3.500 trạng thái/220 ms; ưu tiên trace đã xác minh, có thể tìm đường về trace từ state khác. Không bịa thao tác khi hết ngân sách, trả hướng phục hồi.
+
+`CloudService` mặc định khởi tạo bằng `DefaultFirebaseOptions` do FlutterFire tạo cho project test; có thể override options compile-time hoặc dùng debug Emulator với Firebase app riêng. `FIREBASE_OFFLINE=true` tắt cloud. `account.dart` chứa form/email validation/loading/error. `ProgressStore` thêm UID scope, optional outbox/best_seconds, vẫn đọc schema 1/2. `GameController` đổi store rõ ràng khi đăng nhập/xuất, hỏi nhập guest qua UI. State máy và settings local; Firestore chỉ hồ sơ, unlock và result/checkpoint.
+
+Cloud transaction kết hợp max sao/min lượt/min thời gian, receipt create-only để một operation không tăng attempts hai lần. Queue tuần tự và outbox durable, retry sau 20 giây/resume/thủ công. `kDebugMode` bảo vệ Dev và Firebase Emulator; Dev store không sync. Tham khảo schema/rules và giới hạn trong [FIREBASE_SETUP](FIREBASE_SETUP.md).

@@ -206,6 +206,8 @@ L[0]['mechanical']=dict(source='input',output='output',direction=E('if',eq('reve
 L[0]['constraints'][0]['when']=both(eq('powered',1),E('any',E('!=','$ratio',2),E('!=','$direction',1),eq('safety',0),eq('networkJam',1)))
 from phase2_content import upgrade
 upgrade(L)
+from v3_content import upgrade_v3
+upgrade_v3(L)
 (ROOT/'assets/data/levels.json').write_text(json.dumps(dict(schema_version=2,levels=L),ensure_ascii=False,indent=2),encoding='utf8')
 rows=['# Level matrix — authored baseline','', '| ID | Rule | Inferences | Target moves |', '|---|---|---|---|']
 for l in L: rows.append(f"| {l['id']} — {l['title']} | {l['introduced_rule']} | {'; '.join(l['required_inferences'])} | {l['target_moves']} |")

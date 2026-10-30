@@ -1,3 +1,5 @@
+> Tài liệu bàn giao V2, giữ để tra cứu lịch sử. Trạng thái/code/APK hiện tại: [V3_REPORT](V3_REPORT.md).
+
 # Mechanica — bàn giao repository và APK cuối
 
 Phiên bản source: **1.1.0+2**. Phạm vi lượt này là chuẩn hóa tài liệu/repository và QA, không thêm gameplay, thiết kế lại UI hoặc refactor engine. Chi tiết thay đổi: [REPOSITORY_AUDIT](REPOSITORY_AUDIT.md).

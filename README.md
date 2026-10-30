@@ -2,7 +2,27 @@
 
 Game phiêu lưu giải đố cơ khí 2D bằng **Flutter, Dart và Flame**, dành cho Android màn hình ngang. Người chơi khám phá những căn phòng bỏ quên, đọc dấu vết của người thợ, tìm bộ phận thay thế và đưa các cỗ máy trở lại hoạt động để mở đường tới lõi cuối cùng.
 
-Dự án phục vụ đồ án môn **Lập trình trên thiết bị di động**. Phiên bản trong source: **1.1.0+2**. Game chạy offline, nội dung hiển thị bằng tiếng Việt; không cần tài khoản, API key hay backend.
+Dự án phục vụ đồ án môn **Lập trình trên thiết bị di động**. Phiên bản trong source: **1.2.0+3 (V3)**. Game chơi được offline và lưu tại máy. V3 bổ sung tài khoản email/password và đồng bộ thành tích bằng Firebase khi có cấu hình; nội dung hiển thị bằng tiếng Việt.
+
+## Điểm mới V3 và trạng thái Firebase
+
+- Tutorial màn 01 theo **thao tác thật**: mục tiêu chạm được viền sáng/mũi tên, panel nằm phía đối diện; chỉ chuyển theo việc đã đọc/nhặt/chọn/lắp/cấu hình. Hướng dẫn phục hồi sau thoát, có bỏ qua/xem lại trong tạm dừng. Màn luyện tập không bị phạt sao vì các bước học.
+- **Gợi ý** ba cấp và **Chỉ tôi cách làm**: bước cụ thể kèm lý do và highlight, tìm đường có giới hạn trong isolate; nếu chưa tìm được đường đã kiểm chứng thì chỉ rõ hoàn tác/đặt lại.
+- Tài khoản: đăng ký, đăng nhập, quên mật khẩu, hồ sơ và đăng xuất. Firestore lưu hồ sơ, tiến trình mở khóa, kết quả; transaction giữ thành tích tốt hơn và receipt chống retry tăng đếm.
+- Save khách và từng UID độc lập; nhập dữ liệu khách cần người chơi chọn. Local giữ state giữa màn và outbox, cloud giữ kết quả/tiến trình, không ghi theo frame/tick. Dev Mode không tải điểm thử lên.
+- Ba màn mỗi chương nối nhau bằng thông báo hệ quả, mục tiêu kế tiếp và số máy đã sửa trên chọn chương.
+
+**Đã kiểm chứng bằng Firebase Emulator trên Android.** Build mặc định đã cấu hình project test `mechanica-e9e41`; Email/Password và Firestore đã được xác nhận tồn tại. Rules đã deploy theo sự cho phép của người dùng; kiểm thử Auth và đồng bộ qua SDK Android trên project test thật đã đạt, gồm kiểm tra tách quyền theo UID. Hướng dẫn đầy đủ: [FIREBASE_SETUP](docs/FIREBASE_SETUP.md), kết quả: [V3_REPORT](docs/V3_REPORT.md).
+
+```powershell
+npm ci --prefix tools/firebase
+# Khởi động Auth/Firestore Emulator (cần Java 21+ trên PATH)
+tools/firebase/node_modules/.bin/firebase.cmd emulators:start --only auth,firestore --project demo-mechanica
+# Terminal khác
+flutter run -d emulator-5554 --dart-define=FIREBASE_EMULATOR=true
+```
+
+Project test hiện có đã được FlutterFire cấu hình qua `lib/firebase_options.dart` và `android/app/google-services.json`. Chạy `flutter run` trực tiếp; xem cấu hình và kết quả kiểm thử cloud trong tài liệu setup. Application ID: `com.mechanica.mechanica`. Không dùng service-account key. Chi tiết FlutterFire CLI trong tài liệu setup.
 
 ## Trải nghiệm và tính năng
 
@@ -37,6 +57,8 @@ Dự án phục vụ đồ án môn **Lập trình trên thiết bị di động
 | Đài Thiên Văn | Lõi Vĩnh Cửu |
 | ![Cơ cấu quang học](docs/screenshots/observatory.jpg) | ![Hệ thống lõi và làm lạnh](docs/screenshots/core.jpg) |
 
+![Tutorial tương tác V3](docs/screenshots/v3_tutorial.jpg)
+
 ![Ghép vật phẩm trong túi đồ](docs/screenshots/inventory.jpg)
 
 ## Công nghệ và môi trường
@@ -47,6 +69,7 @@ Dự án phục vụ đồ án môn **Lập trình trên thiết bị di động
 | Flame | 1.38.2 |
 | flame_audio | 2.12.2; audioplayers 6.8.1 là phụ thuộc bắc cầu |
 | shared_preferences | 2.5.6 |
+| Firebase Core / Auth / Firestore | 5.1.0 / 7.0.1 / 7.1.0 |
 | cupertino_icons | 1.0.9 trong lockfile |
 | Kiểm thử | flutter_test, integration_test từ Flutter SDK; flutter_lints 6.0.0 |
 | Android | min SDK 24, compile/target SDK 36 ở môi trường đã build |
@@ -76,7 +99,7 @@ Nếu thiết bị đang có APK với version code cao hơn, Android có thể 
 flutter build apk --release
 ```
 
-APK tổng hợp ABI: **`build/app/outputs/flutter-apk/app-release.apk`**. Để có APK nhỏ hơn theo kiến trúc:
+Bản mặc định dùng project test **mechanica-e9e41**. Build: `flutter build apk --release`. Muốn chỉ chơi offline, thêm `--dart-define=FIREBASE_OFFLINE=true`. APK tổng hợp ABI: **`build/app/outputs/flutter-apk/app-release.apk`**. Để có APK nhỏ hơn theo kiến trúc:
 
 ```sh
 flutter build apk --release --split-per-abi
@@ -133,6 +156,8 @@ flutter build apk --release
 
 Kết quả được chạy thật và phạm vi Android được phân biệt trong [TESTING](docs/TESTING.md). Các integration test sử dụng dữ liệu app trên emulator thử nghiệm; bài kiểm tra hành trình **xóa save thường của app trước khi chạy**, vì vậy chỉ dùng thiết bị/snapshot dành cho QA.
 
+- [FIREBASE_SETUP](docs/FIREBASE_SETUP.md): cấu hình project/emulator, schema và rules.
+- [V3_REPORT](docs/V3_REPORT.md): kiểm thử và giới hạn V3.
 - [ARCHITECTURE](docs/ARCHITECTURE.md): kiến trúc và luồng dữ liệu.
 - [GAMEPLAY](docs/GAMEPLAY.md): quy tắc, thao tác và tiến trình.
 - [TESTING](docs/TESTING.md): ma trận và kết quả kiểm thử.

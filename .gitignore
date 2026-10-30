@@ -67,6 +67,12 @@ __pycache__/
 *.pfx
 *.pem
 *.key
+node_modules/
+.firebase/
+firebase-debug.log
+firestore-debug.log
+/firebase.local.json
+**/*service-account*.json
 .env
 .env.*
 !.env.example

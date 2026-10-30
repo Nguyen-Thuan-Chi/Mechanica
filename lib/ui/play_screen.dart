@@ -12,6 +12,7 @@ import 'settings.dart';
 import 'widgets.dart';
 import 'room_ui.dart';
 import 'developer_menu.dart';
+import 'guidance_overlay.dart';
 
 class PlayScreen extends StatefulWidget {
   const PlayScreen({super.key, required this.controller});
@@ -283,6 +284,12 @@ class PlayScreenState extends State<PlayScreen> {
                       const SizedBox(width: 8),
                     ],
                     MetalButton(
+                      c.assistanceBusy ? 'Đang tìm bước…' : 'Chỉ tôi cách làm',
+                      compact: true,
+                      onPressed: c.assistanceBusy ? null : c.requestAssistance,
+                      accent: accent,
+                    ),
+                    MetalButton(
                       'Gợi ý · ${s.hintsUsed.clamp(0, 3)}/3',
                       compact: true,
                       icon: Icons.lightbulb_outline,
@@ -305,7 +312,10 @@ class PlayScreenState extends State<PlayScreen> {
               ],
             ),
           ),
+        if (c.currentGuide != null && !c.paused && !c.showResult)
+          GuidanceOverlay(c),
         if (c.tutorial != null &&
+            c.currentGuide == null &&
             !c.paused &&
             !c.showResult &&
             !c.inventoryOpen)
@@ -388,6 +398,13 @@ class PlayScreenState extends State<PlayScreen> {
                       runSpacing: 12,
                       children: [
                         MetalButton(
+                          'Hướng dẫn màn đầu',
+                          onPressed: () {
+                            c.resume();
+                            c.replayOnboarding();
+                          },
+                        ),
+                        MetalButton(
                           'Tiếp tục',
                           primary: true,
                           onPressed: c.resume,
@@ -444,7 +461,7 @@ class PlayScreenState extends State<PlayScreen> {
                       stars(s.stars, size: 32, color: accent),
                       const SizedBox(height: 12),
                       Text(
-                        l.story,
+                        l.completion,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           color: cream,

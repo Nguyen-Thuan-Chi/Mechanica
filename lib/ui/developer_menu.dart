@@ -82,6 +82,29 @@ Future<void> showDeveloperMenu(BuildContext context, GameController c) async {
                   spacing: 8,
                   runSpacing: 8,
                   children: [
+                    MetalButton(
+                      'Thử tutorial từ đầu',
+                      compact: true,
+                      onPressed: () {
+                        Navigator.pop(ctx);
+                        c.developerJump(0);
+                        c.store.tutorials.removeWhere(
+                          (f) => f.startsWith('v3_'),
+                        );
+                        c.replayOnboarding();
+                      },
+                    ),
+                    MetalButton(
+                      'Giả lập đã học xong',
+                      compact: true,
+                      onPressed: () {
+                        c.developerTutorialCompleted();
+                      },
+                    ),
+                    Text(
+                      c.cloud.status,
+                      style: const TextStyle(color: gold, fontSize: 12),
+                    ),
                     if (c.session != null)
                       MetalButton(
                         'Đặt lại máy',

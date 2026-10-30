@@ -8,6 +8,7 @@ import '../app/controller.dart';
 import '../game/rendering/drawing.dart';
 import 'settings.dart';
 import 'widgets.dart';
+import 'account.dart';
 import 'developer_menu.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -141,6 +142,7 @@ class _HomeScreenState extends State<HomeScreen>
                 Expanded(
                   flex: 4,
                   child: IgnorePointer(
+                    ignoring: false,
                     child: AnimatedBuilder(
                       animation: spin,
                       builder: (context, _) => Stack(
@@ -197,6 +199,16 @@ class _HomeScreenState extends State<HomeScreen>
                                 color: gold,
                                 letterSpacing: 1.8,
                               ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 0,
+                            right: 0,
+                            child: MetalButton(
+                              'Tài khoản',
+                              compact: true,
+                              icon: Icons.person_outline,
+                              onPressed: () => showAccount(context, c),
                             ),
                           ),
                         ],
@@ -343,7 +355,9 @@ class ChapterScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    open ? '3 màn · $earned / 9 sao' : 'Mở sau màn ${i * 3}',
+                    open
+                        ? '${c.levels.where((l) => l.chapter == i && c.store.bestStars.containsKey(l.id)).length}/3 máy đã sửa · $earned / 9 sao'
+                        : 'Mở sau màn ${i * 3}',
                     style: TextStyle(fontSize: 11, color: chapterColors[i]),
                   ),
                 ],

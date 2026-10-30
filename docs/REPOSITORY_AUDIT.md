@@ -1,3 +1,5 @@
+> Tài liệu bàn giao V2, giữ để tra cứu lịch sử. Trạng thái/code/APK hiện tại: [V3_REPORT](V3_REPORT.md).
+
 # Kiểm tra repository trước bàn giao
 
 ## Phạm vi

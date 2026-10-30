@@ -494,14 +494,14 @@
     "path": "assets/data/levels.json",
     "chapter": "ALL",
     "role": "data",
-    "size": "256266 bytes",
+    "size": "258158 bytes",
     "alpha": false,
     "pivot": "n/a",
     "format": "JSON",
     "method": "Authored project source",
     "license": "Project-authored original",
     "qa": "FILE_VERIFIED",
-    "sha256": "390b5db49ff2865df08519661ec384e7f5034c667ff8eacbf58dc017e26d6cc2"
+    "sha256": "b6e2dd7018cf597722b8f115b21fc8c982ca2f18d522313812017282d45ad76f"
   },
   {
     "id": "DATA_NOTOSANS_OFL",
